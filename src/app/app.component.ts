@@ -1,7 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {MyWorker, MyWorkerDataBase, MyWorkerType} from "./shared/worker.module";
 import {PagesModule} from "./shared/pages.module";
-import {Note} from "../../../project11-main/src/app/shared/interfaces/note.interface";
 
 
 @Component({
@@ -24,11 +22,10 @@ export class AppComponent implements OnInit, AfterViewInit{
   // workers: MyWorker[] =  MyWorkerDataBase;
   // myWorkerType =  MyWorkerType;
   title = 'Список заметок';
-
   pages: PagesModule[] = [];
   idd = 1;
   main = "";
-  head = "";
+  head:any = "";
   buttonEnabled = false;
   constructor() {
     // setTimeout(() => {
@@ -38,12 +35,27 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   }
 
-
   addNew() {
     this.buttonEnabled = true;
-    let page: PagesModule = { id: this.idd++, header: this.head, text: this.main, date: new Date() }
+    let page = { id: this.idd++, header: this.head, text: this.main, date: new Date() }
     this.pages.push(page);
+    this.head = '';
+    this.main = '';
+
   }
+
+  delete(index:number) {
+    this.pages.splice(index,1);
+  }
+    // Если необходимо предотвратить/отменить событие по умолчанию,
+    // то необходимо вызвать метод preventDefault у события
+    // https://developer.mozilla.org/ru/docs/Web/API/Event/preventDefault
+    // e.preventDefault();
+    // если необходимо также предотвратить дальнейшее "всплытие" события,
+    // то необходимо вызвать метод stopPropagation у события
+    // https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation
+    // e.stopPropagation();
+
 
   ngOnInit(): void {
     // console.log(this.someInputName);
@@ -77,6 +89,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   //   // @ts-ignore
   //   console.log(this.someInputName.nativeElement.value);
   // }
+
 
 
 }

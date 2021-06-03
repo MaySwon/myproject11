@@ -104,25 +104,22 @@
     <div class="col-4">
       <h1>{{title}}</h1>
      <div class="form-group">
-       <input type="text" class="form-control mb-3" [(ngModel)]="head" />
+       <input type="text" id="inputt" class="form-control mb-3" [(ngModel)]="head" />
      </div>
       <textarea name="" id="" cols="50" rows="10" [(ngModel)]="main" ></textarea>
-      <button class="btn.btn-primary mb-3 " (click)="addNew()" >Добавить</button>
+      <button class="btn.btn-primary mb-3 " id="buttonAdd" (click)="addNew()" >Добавить</button>
 <!--      <div *ngIf="buttonEnabled===true" class="newNote mb-3">Название:{{}}-->
 <!--        <hr/></div>-->
-      <div *ngFor="let number of pages; let i = index">
-        <p>{{pages[i].id}}.{{pages[i].header}}</p>
+
+
+      <div  class="myblock" *ngFor="let notes of pages; let i = index">
+        <h4>{{pages[i].header}}</h4>
+        <hr/>
         <p>{{pages[i].text}}</p>
         <p>{{pages[i].date|date:'medium'}}</p>
-<!--        <input type="button" value="Удалить" (click)="delete(i)" class="btn btn-danger">-->
+        <input type="button" value="Удалить" (click)="delete(i)" class="btn.btn-primary mb-3">
+
       </div>
-
-<!--      <app-tableworkers-->
-<!--        [title]="'Программисты'"-->
-<!--        [workers]="getByType(myWorkerType.programmer)"-->
-<!--        (deleteWorker) = "onDeleteWorker($event)"-->
-<!--      ></app-tableworkers>-->
-
 <!--      <app-tableworkers-->
 <!--        [title]="'Рекламщики'"-->
 <!--        [workers]="getByType(myWorkerType.copywriter)">-->

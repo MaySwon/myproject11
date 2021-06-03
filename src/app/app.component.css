@@ -1,7 +1,8 @@
 .myblock{
   width: 200px;
   height: 200px;
-  background: limegreen;
+  background: #c4d7c4;
+  border: #7d7d90 solid 1px;
 }
 
 .color-green{
