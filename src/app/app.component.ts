@@ -1,7 +1,12 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {PagesModule} from "./shared/pages.module";
 
 
+export  interface PagesModule {
+  id: number;
+  date: Date;
+  header: string;
+  text: string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,8 +27,10 @@ export class AppComponent implements OnInit, AfterViewInit{
   // workers: MyWorker[] =  MyWorkerDataBase;
   // myWorkerType =  MyWorkerType;
   title = 'Список заметок';
+  button = 'Добавить';
   pages: PagesModule[] = [];
   idd = 1;
+  num =  1;
   main = "";
   head:any = "";
   buttonEnabled = false;
@@ -36,9 +43,12 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   addNew() {
+
     this.buttonEnabled = true;
     let page = { id: this.idd++, header: this.head, text: this.main, date: new Date() }
+    console.log(this.head);
     this.pages.push(page);
+
     this.head = '';
     this.main = '';
 
