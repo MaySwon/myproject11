@@ -12,3 +12,32 @@
 .newNote{
   border: solid 1px black;
 }
+.card {
+  width: 5px;
+}
+
+#inputt{
+  width: 26em;
+}
+#but{
+  background-color: #7d7d90;
+  border: 1px solid ;
+  border-radius: 5px;
+  height: 25px;
+
+}
+.row{
+  position: center;
+}
+
+
+.ddisplay{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+@media(max-width: 800px)  {
+    .ddisplay{
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+}

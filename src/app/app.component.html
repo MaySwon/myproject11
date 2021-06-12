@@ -101,26 +101,41 @@
 <!--</div>-->
 
 <div class="container "><div class="row">
-    <div class="col-4">
+    <div >
       <h1>{{title}}</h1>
-     <div class="form-group">
+     <div class="form">
        <input type="text" id="inputt" class="form-control mb-3" [(ngModel)]="head" />
      </div>
       <textarea name="" id="" cols="50" rows="10" [(ngModel)]="main" ></textarea>
-      <button class="btn.btn-primary mb-3 " id="buttonAdd" (click)="addNew()" *ngIf="head!==''||pages.length > 0"  >{{pages.length > 0?'Создать заметку':'Добавить заметку'}}</button>
+      <br/>
+      <button class="btn.btn-primary mb-3 " id="buttonAdd" (click)="addNew()" *ngIf="head!==''"  >{{pages.length > 0?'Создать заметку':'Добавить заметку'}}</button>
 <!--      <div *ngIf="buttonEnabled===true" class="newNote mb-3">Название:{{}}-->
 <!--        <hr/></div>-->
 
+<div class="ddisplay">
+      <div *ngFor="let notes of pages; let i = index" id="cardc" class="card col-sm mb-2" style="width: 15rem;">
+        <div class="card-body">
+          <h6 class="card-title">Заметка {{ i}}. {{ pages[i].header}}</h6>
+          <hr/>
+          <p class="card-text">{{pages[i].text}}</p>
+          <input type="button" value="Удалить" (click)="delete(i)" class="btn.btn-primary mb-3">
+          <p>{{pages[i].date}}</p>
 
-      <div  class="myblock mb-4" *ngFor="let notes of pages; let i = index">
-        <h4>Заметка {{ i}} {{ pages[i].header}}</h4>
-        <hr/>
-        <p>{{pages[i].text}}</p>
-        <input type="button" value="Удалить" (click)="delete(i)" class="btn.btn-primary mb-3">
-        <p>{{pages[i].date|date:'medium'}}</p>
-
-
+        </div>
       </div>
+</div>
+
+
+<!--      <div  class="myblock mb-4" *ngFor="let notes of pages; let i = index">-->
+<!--        <h4>Заметка {{ i}} {{ pages[i].header}}</h4>-->
+<!--        <hr/>-->
+<!--        <p>{{pages[i].text}}</p>-->
+<!--        <input type="button" value="Удалить" (click)="delete(i)" class="btn.btn-primary mb-3">-->
+<!--        <p>{{pages[i].date|date:'medium'}}</p>-->
+
+
+<!--      </div>-->
+
 <!--      <app-tableworkers-->
 <!--        [title]="'Рекламщики'"-->
 <!--        [workers]="getByType(myWorkerType.copywriter)">-->
@@ -137,6 +152,25 @@
 
 <!--      </app-tableworkers>-->
 
+<!--      <div   class=" container">-->
+<!--        <div class="row " *ngFor="let notes of numMass">-->
+
+<!--          <div *ngFor="let notes of pages; let i = index" class="card col-sm" style="width: 15rem;">-->
+<!--            <div class="card-body">-->
+<!--              <h5 class="card-title">Заметка {{ i}} {{ pages[i].header}}</h5>-->
+<!--              <p class="card-text">{{pages[i].text}}</p>-->
+<!--              <input type="button" value="Удалить" (click)="delete(i)" class="btn.btn-primary mb-3">-->
+<!--              <p>{{pages[i].date|date:'medium'}}</p>-->
+
+<!--            </div>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+
+
   </div>
+  <a href="#" *ngIf="pages.length>4" id="but" class="btn-primary w-auto m-lg-2" >Наверх!</a>
   </div>
 </div>
+

@@ -31,6 +31,8 @@ export class AppComponent implements OnInit, AfterViewInit{
   pages: PagesModule[] = [];
   idd = 1;
   num =  1;
+  card = 1;
+  numMass: any = [];
   main = "";
   head:any = "";
   buttonEnabled = false;
@@ -51,7 +53,12 @@ export class AppComponent implements OnInit, AfterViewInit{
 
     this.head = '';
     this.main = '';
-
+    this.num++;
+    if((this.num % 4)  === 0){
+      this.card++;
+      this.numMass.push(this.card);
+      console.log(this.card);
+    }
   }
 
   delete(index:number) {
